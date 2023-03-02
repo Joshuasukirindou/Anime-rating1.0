@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Anime Rating </title>
+</head>
+<body>
+     <h1> Anime Rating for Presenting</h1>
+     {% for row in rows %}
+     <p>Anime:
+    <b>{{row["AnimeID"]}}</b> |
+    {{row["Anime_name"]}} |
+    {{row["Anime_type"]}} |
+    {{row["Anime_rating"]}} |
+     </p>
+     {% endfor %}
+
+</body>
+</html>
