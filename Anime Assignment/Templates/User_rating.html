@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Rating</title>
+</head>
+<body>
+     <h2> User rated Anime for Presenting</h2>
+     {% for row in rows %}
+     <p>User_rating:
+         <b>{{row["User_id"]}}</b> |
+         {{row["Anime_id"]}} |
+         {{row["rating"]}} |
+     </p>
+     {% endfor %}
+
+</body>
+</html>
