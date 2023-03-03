@@ -12,7 +12,7 @@ from datetime import datetime
 
 # open the connection to the database
 
-conn = sqlite3.connect('Anime_search_data.db',detect_types=sqlite3.PARSE_DECLTYPES | sqlite3.PARSE_COLNAMES)
+conn = sqlite3.connect('Anime_search_data.db', detect_types=sqlite3.PARSE_DECLTYPES | sqlite3.PARSE_COLNAMES)
 # create cursor to select files or values
 cur = conn.cursor()
 
@@ -26,7 +26,7 @@ conn.execute('CREATE TABLE Anime(id INTEGER PRIMARY KEY, Anime_name TEXT, Anime_
 conn.execute('CREATE TABLE User_rating(id INTEGER, Anime_id INTEGER, rating INTEGER, FOREIGN KEY(Anime_id) REFERENCES Anime(id))')
 print("table created successfully");
 
-with open('Anime csv files/anime3.csv',encoding='ISO-8859-1', newline='') as file1:
+with open('Anime csv files/anime3.csv', encoding='ISO-8859-1', newline='') as file1:
     reader1 = csv.reader(file1, delimiter=",")
     next(reader1)
     for row in reader1:
@@ -39,7 +39,7 @@ with open('Anime csv files/anime3.csv',encoding='ISO-8859-1', newline='') as fil
         cur.execute('INSERT INTO Anime VALUES (?,?,?,?)', (Anime_id, Anime_name, Anime_type, Anime_rating))
         conn.commit()
 
-with open('Anime csv files/rating.csv',encoding='ISO-8859-1', newline='') as file2:
+with open('Anime csv files/rating.csv', encoding='ISO-8859-1', newline='') as file2:
     reader2 = csv.reader(file2, delimiter=",")
     next(reader2)
     for row in reader2:
