@@ -26,7 +26,7 @@ def animes_details():
     cur.execute("select * from Anime")
     rows = cur.fetchall()
     conn.close()
-    return render_template('Anime_details.html', rows=rows)
+    return render_template('Anime_details.html',rows=rows)
 
 @app.route('/User_rating')
 def user_rating():
@@ -38,6 +38,8 @@ def user_rating():
     rows = cur.fetchall()
     conn.close()
     return render_template('User_rating.html',rows=rows)
+
+
 
 
 if __name__ == '__main__':

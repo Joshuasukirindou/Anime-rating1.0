@@ -20,6 +20,7 @@ cur = conn.cursor()
 conn.execute('DROP TABLE IF EXISTS Anime')
 conn.execute('DROP TABLE IF EXISTS User_rating')
 
+
 print("table dropped successfully");
 
 conn.execute('CREATE TABLE Anime(id INTEGER PRIMARY KEY, Anime_name TEXT, Anime_type TEXT, Anime_Rating INTEGER )')
@@ -39,7 +40,7 @@ with open('Anime csv files/anime3.csv', encoding='ISO-8859-1', newline='') as fi
         cur.execute('INSERT INTO Anime VALUES (?,?,?,?)', (Anime_id, Anime_name, Anime_type, Anime_rating))
         conn.commit()
 
-with open('Anime csv files/rating.csv', encoding='ISO-8859-1', newline='') as file2:
+with open('Anime csv files/graders.csv', encoding='ISO-8859-1', newline='') as file2:
     reader2 = csv.reader(file2, delimiter=",")
     next(reader2)
     for row in reader2:

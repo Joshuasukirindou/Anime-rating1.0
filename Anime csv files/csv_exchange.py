@@ -6,6 +6,6 @@
 
 import pandas as pd
 
-data = pd.read_csv("anime1.csv")
+data = pd.read_csv("rating.csv")
 res = data.dropna(how="all")
-res.to_csv("anime4.csv", index=False)
+res.to_csv("graders.csv", index=False)
