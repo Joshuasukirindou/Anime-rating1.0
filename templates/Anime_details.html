@@ -35,6 +35,10 @@
 </head>
 <body>
     <h1>Anime Details for Presenting</h1>
+   <div style="text-align: center;">
+    <a href="#" onclick="history.back()" style="display: inline-block; margin-top: 20px; padding: 10px 20px; background-color: #008CBA; color: white; text-decoration: none; border-radius: 5px;">Return to Previous Page</a>
+</div>
+
     <table>
         <thead>
             <tr>
@@ -47,16 +51,15 @@
         <tbody>
             {% for row in rows %}
             <tr>
-                <td><b>{{ row["id"] }}</b></td>
+                <td><a href="Grader_rating">{{ row['id'] }}</a></td>
                 <td>{{ row["Anime_name"] }}</td>
                 <td>{{ row["Anime_type"] }}</td>
                 <td>{{ row["Anime_rating"] }}</td>
+
             </tr>
             {% endfor %}
         </tbody>
     </table>
-</body>
-</html>
 
 
 </body>

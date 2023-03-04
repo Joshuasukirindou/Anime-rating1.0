@@ -18,13 +18,15 @@ cur = conn.cursor()
 
 # drop the tables to clean repeating values
 conn.execute('DROP TABLE IF EXISTS Anime')
-conn.execute('DROP TABLE IF EXISTS User_rating')
+conn.execute('DROP TABLE IF EXISTS Grader')
+conn.execute('DROP TABLE IF EXISTS Rating_detail')
 
 
 print("table dropped successfully");
 
 conn.execute('CREATE TABLE Anime(id INTEGER PRIMARY KEY, Anime_name TEXT, Anime_type TEXT, Anime_Rating INTEGER )')
-conn.execute('CREATE TABLE User_rating(id INTEGER, Anime_id INTEGER, rating INTEGER, FOREIGN KEY(Anime_id) REFERENCES Anime(id))')
+conn.execute('CREATE TABLE Grader(id INTEGER, Anime_id INTEGER, rating INTEGER, FOREIGN KEY(Anime_id) REFERENCES Anime(id))')
+conn.execute('CREATE TABLE Rating_detail(id INTEGER PRIMARY KEY AUTOINCREMENT, rating INTEGER, Grader_id INTEGER, Anime_id INTEGER, Anime_name TEXT, FOREIGN KEY(Grader_id) REFERENCES Grader(id), FOREIGN KEY(Anime_id) REFERENCES Anime(id), FOREIGN KEY(Anime_name) REFERENCES Anime(Anime_name), FOREIGN KEY(rating) REFERENCES Grader(rating))')
 print("table created successfully");
 
 with open('Anime csv files/anime3.csv', encoding='ISO-8859-1', newline='') as file1:
@@ -44,16 +46,28 @@ with open('Anime csv files/graders.csv', encoding='ISO-8859-1', newline='') as f
     reader2 = csv.reader(file2, delimiter=",")
     next(reader2)
     for row in reader2:
-        User_id = int(row[0])
+        Grader_id = int(row[0])
         Anime_id = int(row[1])
         rating = int(row[2])
 
-        cur.execute('INSERT INTO User_rating VALUES(?,?,?)', (User_id, Anime_id, rating))
+        cur.execute('INSERT INTO Grader VALUES(?,?,?)', (Grader_id, Anime_id, rating))
+        conn.commit()
+
+# attach rating_detail to Anime
+cur.execute('select * from Anime')
+Anime = cur.fetchall()
+
+cur.execute('select * from Grader')
+Grader = cur.fetchall()
+
+for anime in Anime:
+    for grader in Grader:
+        rate = Grader[2]
+        grader_id = Grader[0]
+        anime_id = Anime[0]
+        anime_name = Anime[1]
+        cur.execute('INSERT INTO rating_detail VALUES(NULL,?,?,?,?)', (rate, grader_id, anime_id, anime_name))
         conn.commit()
 
     print("data parsed successfully");
-
     conn.close()
-
-
-
