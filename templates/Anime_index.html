@@ -2,14 +2,65 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Anime Rating </title>
+    <title>Welcome To Anime Rating Page </title>
+    <style type="text/css">
+        .button {
+            display: inline-block;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            text-decoration: none;
+            background-color: #4285F4;
+            color: #FFFFFF;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #3367D6;
+        }
+        .button-secondary {
+            display: inline-block;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            text-decoration: none;
+            background-color: #4285F4;
+            color: #FFFFFF;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+        }
+        .button-secondary:hover {
+            background-color: #3367D6;
+        }
+        body{
+            background-image: url("image/backgroud.jpg");
+            background-color: aquamarine;
+            text-align: center;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: antiquewhite;
+            border-radius: 10px;
+        }
+
+
+    </style>
 </head>
 <body>
-       <h2> Anime Rating Data </h2>
-       <h3>Welcome come to a website, find the most popular anime in recent years!</h3>
+       <div class="container">
+       <h1> Welcome to my Anime information website </h1>
+       <h2> You can find the most popular anime in recent years!</h2>
        <p>Look at two links below, one will take you to the page which shows Anime rating details.</p>
        <p>And the other link will take you to the page which shows graders details</p>
-       <p><a href="Anime_details">Anime_details</a> | <a href="User_rating">Graders</a></p>
+       <p><a href="Anime_details" class="button">Anime_details</a>
+           <a href="User_rating" class="button-secondary">Graders</a></p>
+       </div>
 
 </body>
 </html>
